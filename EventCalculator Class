@@ -1,0 +1,89 @@
+# Assignment-2-for-programming
+set todays date and event date and output shows how far event date is from todays date
+
+import java.util.Scanner;
+
+public class EventCalculator {
+	Scanner input = new Scanner(System.in);	
+	private OurDate todayDate;
+	private OurDate eventDate;
+	private String eventDescription;
+	private String message;
+	private int differenceOfDays; //difference of todayDate.totalCalc and eventDate.totalCalc
+	private int daysToWeek; //converts days to week if over or equal 7
+	private int todayTotalCalcDays;
+	private int eventTotalCalcDays;
+
+	public  EventCalculator (){ //Object's values are passed here from main method
+		
+	}
+
+	public void enterEvent(){ //Enters the event
+		todayDate = new OurDate();
+		eventDate = new OurDate();
+		System.out.println("Enter today's date:"); //today's date
+		todayDate.setYearFromUser();
+		todayDate.setMonthFromUser();
+		todayDate.setDayFromUser();
+
+		System.out.println("\nEnter event date:");//event's date
+		eventDate.setYearFromUser();
+		eventDate.setMonthFromUser();
+		eventDate.setDayFromUser();
+
+		System.out.println("\nEnter event description:");
+		eventDescription=input.nextLine();
+	}
+
+	public void calculateMessage(){ //calculates the different scenarios for message
+		todayTotalCalcDays = todayDate.calcDays();
+		eventTotalCalcDays = eventDate.calcDays();
+		differenceOfDays = eventTotalCalcDays-todayTotalCalcDays;
+		
+		if(todayTotalCalcDays>eventTotalCalcDays){ //if the event date is earlier than today's date
+			message= eventDescription +" has passed";
+		}
+
+		if((differenceOfDays)<=7){ 
+			
+			if(differenceOfDays==0){ //if event date is equal to today
+				message= eventDescription + " is today";
+			}
+
+			if(differenceOfDays==1){ // if days to even is equal to one
+				message= eventDescription + " is in " + differenceOfDays;
+			}
+
+			else if(differenceOfDays>0){ //if event date is greater than 0
+				message= eventDescription + " is in " + differenceOfDays + " days";
+			}
+		}
+
+		if((differenceOfDays)>=7){
+			daysToWeek = differenceOfDays/7;
+			if(daysToWeek<=1){
+				message= eventDescription + " is in " + daysToWeek + " days";
+			}
+			else{
+				message= eventDescription + " is in " + daysToWeek + " weeks";
+			}
+		}
+	}
+
+
+	public void displayResults(){
+
+		System.out.print("\nToday date: ");
+		todayDate.displayDate();
+
+		System.out.print("\nEvent date: ");
+		eventDate.displayDate();
+
+		System.out.print("\nEvent: ");
+		
+		System.out.printf("%s",message);
+
+	}
+}
+
+
