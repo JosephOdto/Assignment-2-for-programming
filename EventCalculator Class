@@ -1,6 +1,9 @@
 # Assignment-2-for-programming
 set todays date and event date and output shows how far event date is from todays date
 
+// 	Joseph Odtohan 
+//	Section - 300 
+//	Instructor - Howard Rosenblum
 import java.util.Scanner;
 
 public class EventCalculator {
@@ -14,11 +17,12 @@ public class EventCalculator {
 	private int todayTotalCalcDays;
 	private int eventTotalCalcDays;
 
-	public  EventCalculator (){ //Object's values are passed here from main method
-		
+	public  EventCalculator (){ //default values
+		todayDate = null;
+		eventDate = null;
 	}
 
-	public void enterEvent(){ //Enters the event
+	public void enterEvent(){ //enters both dates and description
 		todayDate = new OurDate();
 		eventDate = new OurDate();
 		System.out.println("Enter today's date:"); //today's date
@@ -35,43 +39,46 @@ public class EventCalculator {
 		eventDescription=input.nextLine();
 	}
 
-	public void calculateMessage(){ //calculates the different scenarios for message
+	public void calculateMessage(){ //calculates output message
 		todayTotalCalcDays = todayDate.calcDays();
 		eventTotalCalcDays = eventDate.calcDays();
 		differenceOfDays = eventTotalCalcDays-todayTotalCalcDays;
-		
+
 		if(todayTotalCalcDays>eventTotalCalcDays){ //if the event date is earlier than today's date
 			message= eventDescription +" has passed";
 		}
 
 		if((differenceOfDays)<=7){ 
-			
-			if(differenceOfDays==0){ //if event date is equal to today
+
+			if(differenceOfDays==0) //if event date is equal to today
 				message= eventDescription + " is today";
-			}
 
-			if(differenceOfDays==1){ // if days to even is equal to one
-				message= eventDescription + " is in " + differenceOfDays;
-			}
 
-			else if(differenceOfDays>0){ //if event date is greater than 0
+			if(differenceOfDays==1) // if days to even is equal to one
+				message= eventDescription + " is in " + differenceOfDays + " day";
+
+
+			else if(differenceOfDays>0) //if event date is greater than 0
 				message= eventDescription + " is in " + differenceOfDays + " days";
-			}
+
 		}
 
-		if((differenceOfDays)>=7){
-			daysToWeek = differenceOfDays/7;
-			if(daysToWeek<=1){
+		else{ 
+			daysToWeek =  differenceOfDays/7;
+			
+			if(differenceOfDays<=7) //if days are less than 7 or equal to 7 then its counted as days
 				message= eventDescription + " is in " + daysToWeek + " days";
-			}
-			else{
+
+			else if (daysToWeek==1) //if days are more than 7 then its counted as weeks
+				message= eventDescription + " is in " + daysToWeek + " week";
+			
+			else //if more than 1 week away
 				message= eventDescription + " is in " + daysToWeek + " weeks";
-			}
 		}
 	}
 
 
-	public void displayResults(){
+	public void displayResults(){ //display both dates, description, and output message
 
 		System.out.print("\nToday date: ");
 		todayDate.displayDate();
@@ -80,10 +87,9 @@ public class EventCalculator {
 		eventDate.displayDate();
 
 		System.out.print("\nEvent: ");
-		
+
 		System.out.printf("%s",message);
 
 	}
 }
-
 
