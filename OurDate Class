@@ -1,0 +1,65 @@
+# Assignment-2-for-programming
+set todays date and event date and output shows how far event date is from todays date
+
+import java.util.Scanner;
+public class OurDate {
+	private int year;
+	private int month;
+	private int day;
+
+	Scanner input = new Scanner(System.in);
+
+
+	public OurDate (){
+		this.month = 1;
+		this.day = 1;
+		this.year = 2000;
+	}
+
+	public void Ourdate (int year, int month, int day){
+		this.year = year;
+		this.month = month;
+		this.day = day;
+	}
+
+
+	public void setYearFromUser(){
+		System.out.printf("Enter a valid year: ");
+		this.year=input.nextInt();
+	}
+
+	public void setMonthFromUser(){
+		System.out.printf("Enter the month: ");
+		this.month=input.nextInt();
+
+	}
+
+	public void setDayFromUser(){
+		System.out.printf("Enter the day: ");
+		this.day=input.nextInt();
+
+	}
+
+
+	public void displayDate(){
+		System.out.printf(" %d/%d/%d",this.year,this.month,this.day);
+	}
+
+	public int calcDays(){ //Calculate the days
+		int totalDays;
+		int daysFromYear=0;
+		int daysFromMonth=0;
+		int daysFromDays=0;
+
+			daysFromYear= (360*(this.year-2000)); 
+
+			daysFromMonth= (30*this.month);
+
+			daysFromDays=this.day;
+
+		totalDays=daysFromYear+daysFromMonth+daysFromDays;
+		return totalDays;
+	}
+
+}
+
