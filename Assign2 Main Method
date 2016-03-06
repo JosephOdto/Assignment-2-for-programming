@@ -2,10 +2,12 @@
 set todays date and event date and output shows how far event date is from todays date
 
 
+// 	Joseph Odtohan 
+//	Section - 300 
+//	Instructor - Howard Rosenblum
 public class Assign2 {
 
 	public static void main(String[] args) {
-	
 
 		EventCalculator event1 = new EventCalculator(); 
 		event1.enterEvent(); //Input both dates and description
@@ -16,4 +18,5 @@ public class Assign2 {
 	}
 
 }
+
 
