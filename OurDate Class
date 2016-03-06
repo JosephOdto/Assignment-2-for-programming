@@ -1,6 +1,9 @@
 # Assignment-2-for-programming
 set todays date and event date and output shows how far event date is from todays date
 
+// 	Joseph Odtohan 
+//	Section - 300 
+//	Instructor - Howard Rosenblum
 import java.util.Scanner;
 public class OurDate {
 	private int year;
@@ -51,15 +54,14 @@ public class OurDate {
 		int daysFromMonth=0;
 		int daysFromDays=0;
 
-			daysFromYear= (360*(this.year-2000)); 
+		daysFromYear= (360*(this.year-2000)); 
 
-			daysFromMonth= (30*this.month);
+		daysFromMonth= (30*this.month);
 
-			daysFromDays=this.day;
+		daysFromDays=this.day;
 
 		totalDays=daysFromYear+daysFromMonth+daysFromDays;
 		return totalDays;
 	}
 
 }
-
